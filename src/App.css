@@ -14,14 +14,10 @@ header {
   color:#333333;
 }
 
-main {
-  min-height: 80vh;
-  margin: 20px
-}
-
 .search-container {
   margin-top: 32px;
   text-align: center;
+  min-height: calc(75vh);
 }
 
 .search-container input[type=text] {
@@ -41,6 +37,9 @@ main {
   font-weight: bold;
 }
 
+#rep-search-results { 
+  padding-top:40px; 
+}
 #rep-search-results h4.rep-name-office {
   margin-bottom:4px;
 }
