@@ -20,6 +20,7 @@ main {
 }
 
 .search-container {
+  margin-top: 32px;
   text-align: center;
 }
 
@@ -27,16 +28,28 @@ main {
   width: 750px;
   height:40px;
   font-size: 1.4em;
+  padding-left: 12px;
 }
 
 .search-container button {
   margin: 12px auto;
   padding: 6px 20px;
-  background-color: #882299;
+  background-color: #339a55;
   color:#FFFFFF;
   border-radius: 4px;
   font-size:1.4em;
   font-weight: bold;
+}
+
+#rep-search-results h4.rep-name-office {
+  margin-bottom:4px;
+}
+#rep-search-results div.rep-info {
+  margin-bottom: 2em;
+}
+#rep-search-results div.rep-info p {
+  font-size:1.2em;
+  margin-bottom: 0;
 }
 
 footer {

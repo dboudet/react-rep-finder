@@ -1,16 +1,30 @@
 import {useState} from 'react'
+import {APIKEY} from '../config'
+import RepresentativeSearchResults from './RepresentativeSearchResults'
+
 
 function RepresentativeSearch() {
     const [address, setAddress] = useState('')
-    
+    const [offices, setOffices] = useState([])
+    const [officials, setOfficials] = useState([])
+
     const searchRepresentatives = () => {
         console.log("Searching...")
+        fetch(`https://civicinfo.googleapis.com/civicinfo/v2/representatives?address=${address}&key=${APIKEY}`)
+            .then(res => res.json())
+            .then(json => {
+                setOffices(json.offices)
+                setOfficials(json.officials)
+                return
+            })
+            .catch(err => console.log(err))
     }
 
     return(
         <div className="search-container">
             <input 
                 name="representativeSearch"
+                placeholder="Enter your address"
                 type="text" 
                 className="search-bar"
                 value={address}
@@ -19,6 +33,7 @@ function RepresentativeSearch() {
             <div>
                 <button onClick={() => searchRepresentatives()}>Submit</button>
             </div>
+            <RepresentativeSearchResults offices = {offices} officials = {officials} />
         </div>
     )
 }
