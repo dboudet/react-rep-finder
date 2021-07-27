@@ -3,11 +3,13 @@ import {APIKEY} from '../config'
 import RepresentativeSearchResults from './RepresentativeSearchResults'
 
 
-function RepresentativeSearch() {
+function RepresentativeSearch({user}) {
     const [address, setAddress] = useState('')
     const [offices, setOffices] = useState([])
     const [officials, setOfficials] = useState([])
 
+    console.log('USER ===> ', user)
+    
     const searchRepresentatives = () => {
         console.log("Searching...")
         fetch(`https://civicinfo.googleapis.com/civicinfo/v2/representatives?address=${address}&key=${APIKEY}`)

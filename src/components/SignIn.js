@@ -1,12 +1,29 @@
 import {useState} from 'react'
+import firebase from 'firebase/app'
+import 'firebase/auth'
+import {firebaseConfig} from '../config'
 
-function SignIn() {
+function SignIn({setUser}) {
     const [email,setEmail] = useState("")
     const [password,setPassword] = useState("")
-
+    const [loading,setLoading] = useState(false)
     const userSignIn = (event) => {
         event.preventDefault()
+        setLoading(true)
         console.log("Signing in...")
+
+        if(!firebase.apps.length) {  // checks if already connected
+            firebase.initializeApp(firebaseConfig)
+        }
+        firebase.auth().signInWithEmailAndPassword(email,password)
+            .then(response => {
+                setLoading(false)
+                setUser(response.user)
+            })
+            .catch(err => {
+                setLoading(false)
+                alert(err.message)
+            })
     }
     return(
         <div className="user-form">
@@ -34,7 +51,7 @@ function SignIn() {
                     className="main-button-green"
                     type="submit"
                 >
-                    Sign In
+                    {loading ? 'Signing In...' : 'Sign In'}
                 </button>
             </form>
 
