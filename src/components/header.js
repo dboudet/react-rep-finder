@@ -3,11 +3,13 @@ import {Link} from 'react-router-dom'
 function Header() {
     return(
         <header>
-            <h1>Find Representatives by Address</h1>
+            <h1>Representative Finder</h1>
             <nav>
                 <ul>
-                    <li><button><Link to="/">Home</Link></button></li>
-                    <li><button><Link to="/signup">Sign Up</Link></button></li>
+                    <li><Link to="/">Home</Link></li>
+                    <li><Link to="/search">Search</Link></li>
+                    <li><Link to="/signup">Sign Up</Link></li>
+                    <li><Link to="/signin">Sign In</Link></li>
                 </ul>
             </nav>
         </header>

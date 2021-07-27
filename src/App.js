@@ -8,7 +8,9 @@ import './App.css'
 import Header from './components/header'
 import RepresentativeSearch from './components/RepresentativeSearch';
 import Footer from './components/footer'
-import Signup from './components/Signup';
+import Signup from './components/SignUp';
+import SignIn from './components/SignIn';
+import Homepage from './components/homepage';
 
 function App() {
   return (
@@ -17,11 +19,17 @@ function App() {
 
         <div id="main">  
           <Switch>
+            <Route exact path="/signin">
+              <SignIn />
+            </Route>
             <Route exact path="/signup">
               <Signup />
             </Route>
-            <Route exact path="/">
+            <Route exact path="/search">
               <RepresentativeSearch />
+            </Route>
+            <Route exact path="/">
+              <Homepage />
             </Route>
           </Switch>
         </div>

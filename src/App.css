@@ -1,35 +1,28 @@
 *, a::after, a::before { margin:0; padding:0; box-sizing:inherit; }
 :root {
     --greenaccent: #339a55;
+    --darkgrey: #333333;
 }
 
 header {
-  min-height:80px;
   padding: 12px 20px;
-  background-color: #EFEFEF;
-  color:#333333;
+  background-color:var(--darkgrey);
+  color:#FFFFFF;
+  text-shadow: 1px 1px 4px #333333;
 }
 header>nav>ul {
   display:flex;
   justify-content: flex-start;
-  align-items: center;
   list-style-type:none;
+  margin-top:20px;
 }
-header>nav button {
-  background-color: var(--greenaccent);
-  border-radius: 2px;
-  font-size:1.2em;
-  font-weight: bold;
-  margin: 4px 12px;
-
-}
-header>nav button a {
-  margin: 4px 12px;
+header>nav a {
+  margin: 8px 12px;
   color:#ffffff;
   font-weight: bold;
   text-decoration:none;
 }
-header>nav button a:hover {
+header>nav a:hover {
   color:#DCDCDC;
   text-decoration: underline;
 }
@@ -39,16 +32,28 @@ header>nav button a:hover {
   text-align: center;
   margin-top: 32px;
 }
-
 footer {
   display: flex;
   align-items: center;
   justify-content: center;
   min-height:80px;
   padding: 0 20px;
-  background-color: #333333;
+  background-color: var(--darkgrey);
   color:#FFFFFF;
 }
+
+/* HOMEPAGE */
+#hero {
+  background: #FFFFFF url(./assets/stars-background.jpeg) no-repeat center;
+  background-size:cover;
+  height:200px;
+  margin-top:-32px;
+}
+#homepage-intro {
+  margin-top:32px;
+}
+
+
 /* SEARCH PAGE */
 .search-container input[type=text] {
   width: 750px;
@@ -82,21 +87,21 @@ footer {
 }
 
 /* SIGNUP PAGE */
-#signup-form {
+.user-form {
   width:80%;
   max-width: 500px;
   margin:0 auto;
 }
-#signup-form form {
+.user-form form {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-content: space-between;
 }
-#signup-form h2 {
+.user-form h2 {
   margin-bottom: 64px;
 }
-#signup-form label{
+.user-form label{
   display: flex;
   flex-direction: row;
   justify-content: space-between;

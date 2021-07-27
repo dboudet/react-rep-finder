@@ -1,17 +1,17 @@
-import {useState} from "react"
+import {useState} from 'react'
 
-function SignUp(){
+function SignIn() {
     const [email,setEmail] = useState("")
     const [password,setPassword] = useState("")
 
-    const userSignUp = (event) => {
+    const userSignIn = (event) => {
         event.preventDefault()
-        console.log("Signing up...")
+        console.log("Signing in...")
     }
     return(
         <div className="user-form">
-            <h2>Sign up below to find your representatives.</h2>
-            <form onSubmit={(event) => userSignUp(event)}>
+            <h2>Existing users: please log in below.</h2>
+            <form onSubmit={(event) => userSignIn(event)}>
                 <label>Email:&nbsp;
                     <input 
                         name="email"
@@ -30,15 +30,16 @@ function SignUp(){
                         onChange={event => setPassword(event.target.value)}
                     />
                 </label>
-                <button
-                className="main-button-green"
-                type="submit"
+                <button 
+                    className="main-button-green"
+                    type="submit"
                 >
-                    Sign Up
+                    Sign In
                 </button>
             </form>
+
         </div>
     )
 }
 
-export default SignUp
+export default SignIn
