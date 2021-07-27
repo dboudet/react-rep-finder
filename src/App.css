@@ -1,25 +1,55 @@
 *, a::after, a::before { margin:0; padding:0; box-sizing:inherit; }
 :root {
-    --blurple: #515fbc;
-    --gray: #8e99a1;
+    --greenaccent: #339a55;
 }
 
 header {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
   min-height:80px;
-  padding: 0 20px;
+  padding: 12px 20px;
   background-color: #EFEFEF;
   color:#333333;
 }
+header>nav>ul {
+  display:flex;
+  justify-content: flex-start;
+  align-items: center;
+  list-style-type:none;
+}
+header>nav button {
+  background-color: var(--greenaccent);
+  border-radius: 2px;
+  font-size:1.2em;
+  font-weight: bold;
+  margin: 4px 12px;
 
-.search-container {
-  margin-top: 32px;
-  text-align: center;
-  min-height: calc(75vh);
+}
+header>nav button a {
+  margin: 4px 12px;
+  color:#ffffff;
+  font-weight: bold;
+  text-decoration:none;
+}
+header>nav button a:hover {
+  color:#DCDCDC;
+  text-decoration: underline;
 }
 
+#main {
+  min-height: 72vh;
+  text-align: center;
+  margin-top: 32px;
+}
+
+footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height:80px;
+  padding: 0 20px;
+  background-color: #333333;
+  color:#FFFFFF;
+}
+/* SEARCH PAGE */
 .search-container input[type=text] {
   width: 750px;
   height:40px;
@@ -27,7 +57,7 @@ header {
   padding-left: 12px;
 }
 
-.search-container button {
+.main-button-green {
   margin: 12px auto;
   padding: 6px 20px;
   background-color: #339a55;
@@ -51,12 +81,26 @@ header {
   margin-bottom: 0;
 }
 
-footer {
+/* SIGNUP PAGE */
+#signup-form {
+  width:80%;
+  max-width: 500px;
+  margin:0 auto;
+}
+#signup-form form {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height:80px;
-  padding: 0 20px;
-  background-color: #333333;
-  color:#FFFFFF;
+  flex-direction: column;
+  justify-content: space-between;
+  align-content: space-between;
+}
+#signup-form h2 {
+  margin-bottom: 64px;
+}
+#signup-form label{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: 1.4em;
+  font-weight: bold;
+  margin-bottom: 32px;
 }

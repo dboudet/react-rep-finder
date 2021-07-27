@@ -31,7 +31,7 @@ function RepresentativeSearch() {
                 onChange={event=> setAddress(event.target.value)}
             />
             <div>
-                <button onClick={() => searchRepresentatives()}>Submit</button>
+                <button className="main-button-green" onClick={() => searchRepresentatives()}>Submit</button>
             </div>
             <RepresentativeSearchResults offices = {offices} officials = {officials} />
         </div>
