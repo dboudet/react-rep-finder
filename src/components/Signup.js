@@ -28,13 +28,13 @@ function SignUp({setUser}){
     }
     return(
         <div className="user-form">
-            <h2>Sign up below to find your representatives.</h2>
+            <h2>Sign up below to find your representatives</h2>
             <form onSubmit={(event) => userSignUp(event)}>
                 <label>Email:&nbsp;
                     <input 
                         name="email"
                         type="email"
-                        size="25"
+                        size="40"
                         value={email}
                         onChange={event => setEmail(event.target.value)}
                     />
@@ -43,7 +43,7 @@ function SignUp({setUser}){
                     <input 
                         name="password"
                         type="password"
-                        size="25"
+                        size="40"
                         value={password}
                         onChange={event => setPassword(event.target.value)}
                     />
