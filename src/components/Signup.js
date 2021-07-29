@@ -2,11 +2,36 @@ import {useState} from "react"
 import firebase from "firebase/app"
 import 'firebase/auth'
 import {firebaseConfig} from "../config"
+import { usingEndpoint } from "../constants/endpoint"
 
-function SignUp({setUser}){
-    const [email,setEmail] = useState("")
-    const [password,setPassword] = useState("")
+export default function SignUp({setUser}){
+    const [email,setEmail] = useState('')
+    const [password,setPassword] = useState('')
     const [loading,setLoading] = useState(false)
+
+    const createUser = () => {        
+        const formValues = {
+            email: email
+        }
+
+        fetch(`${usingEndpoint}/users`, {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(formValues)
+        })
+            .then(response => {
+                setLoading(false)
+                return response.json()
+            })
+            .then(json => {
+                setLoading(false)
+                console.log('json ---->' , json)
+            })
+            .catch(err => {
+                setLoading(false)
+                alert(err)
+            })
+    }
 
     const userSignUp = (event) => {
         event.preventDefault()
@@ -18,8 +43,8 @@ function SignUp({setUser}){
         }
         firebase.auth().createUserWithEmailAndPassword(email,password)
             .then(response => {
-                setLoading(false)
                 setUser(response.user)
+                createUser() 
             })
             .catch(err => {
                 alert(err.message)
@@ -58,5 +83,3 @@ function SignUp({setUser}){
         </div>
     )
 }
-
-export default SignUp

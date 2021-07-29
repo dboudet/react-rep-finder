@@ -4,17 +4,17 @@ import 'firebase/auth'
 import {firebaseConfig} from '../config'
 
 function SignIn({setUser}) {
-    const [email,setEmail] = useState("")
-    const [password,setPassword] = useState("")
+    const [email,setEmail] = useState('')
+    const [password,setPassword] = useState('')
     const [loading,setLoading] = useState(false)
     const userSignIn = (event) => {
         event.preventDefault()
         setLoading(true)
-        console.log("Signing in...")
+        console.log('Signing in...')
 
-        if(!firebase.apps.length) {  // checks if already connected
+        if(!firebase.apps.length){ // checks if already connected
             firebase.initializeApp(firebaseConfig)
-        }
+        }        
         firebase.auth().signInWithEmailAndPassword(email,password)
             .then(response => {
                 setLoading(false)

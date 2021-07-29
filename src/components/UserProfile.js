@@ -1,12 +1,32 @@
-import {useState} from 'react'
+import {useState,useEffect} from 'react'
+import { usingEndpoint } from '../constants/endpoint'
 
-function UserProfile({user}) {
+function UserProfile({user,userProfile,setUserProfile}) {
     const [firstName, setFirstName] = useState('')
     const [lastName, setLastName] = useState('')
     const [address, setAddress] = useState('')
     const [loading, setLoading] = useState(false)
 
-    const createUser = (event) => {
+    useEffect(() => {
+        if(userProfile !== undefined) {
+            setFirstName(userProfile.firstName)
+            setLastName(userProfile.lastName)
+            setAddress(userProfile.address)
+        }
+    },[userProfile])
+
+    const getUser = () => {
+      fetch(`${usingEndpoint}/users/${user?.email}`)
+        .then(res => res.json())
+        .then(json => { 
+          console.log('user -->' , json)
+          setUserProfile(json.data)
+          localStorage.setItem('user', JSON.stringify(json.data))
+        })
+        .catch(err => alert(err))
+    }
+
+    const updateUser = (event) => {
         event.preventDefault()
         setLoading(true)
         
@@ -14,11 +34,10 @@ function UserProfile({user}) {
             firstName: firstName,
             lastName: lastName,
             address: address,
-            email: user.email
         }
 
-        fetch('https://react-rep-finder-api.web.app/users', {
-            method: 'POST',
+        fetch(`${usingEndpoint}/users/${userProfile.id}`, {
+            method: 'PATCH',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(formValues)
         })
@@ -28,7 +47,8 @@ function UserProfile({user}) {
             })
             .then(json => {
                 setLoading(false)
-                console.log('json ---->' , json)
+                console.log('User updated. \n json ---->' , json)
+                getUser()
             })
             .catch(err => {
                 setLoading(false)
@@ -39,7 +59,7 @@ function UserProfile({user}) {
     return(
         <div className="user-form">
             <h2>User Profile</h2>
-            <form onSubmit={(event) => createUser(event)}>
+            <form onSubmit={(event) => updateUser(event)}>
                 <label>First Name:&nbsp;
                     <input 
                         name="firstName"
@@ -71,7 +91,7 @@ function UserProfile({user}) {
                     className="main-button-green"
                     type="submit"
                 >
-                    {loading ? 'Loading...' : 'Submit'}
+                    {loading ? 'Loading...' : 'Update Profile'}
                 </button>
             </form>
 
