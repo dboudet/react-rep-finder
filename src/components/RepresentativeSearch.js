@@ -3,7 +3,7 @@ import {APIKEY} from '../config'
 import RepresentativeSearchResults from './RepresentativeSearchResults'
 
 
-function RepresentativeSearch({user}) {
+export default function RepresentativeSearch({user}) {
     const [address, setAddress] = useState('')
     const [offices, setOffices] = useState([])
     const [officials, setOfficials] = useState([])
@@ -39,5 +39,3 @@ function RepresentativeSearch({user}) {
         </div>
     )
 }
-
-export default RepresentativeSearch

@@ -1,10 +1,14 @@
-function RepresentativeSearchResults(props) {
+import { useContext } from "react"
+import { UserContext } from "../App"
+
+export default function RepresentativeSearchResults(props) {
 
     const { offices, officials } = props
-
+    const {userProfile} = useContext(UserContext)
 
     return(
         <div id="rep-search-results">
+            {userProfile && <h4>Here are your results, {userProfile?.firstName}:</h4>}
             {offices.map( office => {
                 const official = officials[office.officialIndices[0]] // just setting a variable for reuse
 
@@ -30,5 +34,3 @@ function RepresentativeSearchResults(props) {
         </div>
     )
 }
-
-export default RepresentativeSearchResults

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, createContext } from 'react'
 import { 
   BrowserRouter as Router,
   Switch,
@@ -18,7 +18,9 @@ import {usingEndpoint} from './constants/endpoint'
 
 if(!firebase.apps.length){ // checks if already connected
   firebase.initializeApp(firebaseConfig)
-}   
+}
+
+export const UserContext = createContext(undefined)
 
 function App() {
   const [user,setUser] = useState(undefined)
@@ -50,6 +52,7 @@ function App() {
 
   return (
     <Router>
+      <UserContext.Provider value={{user, userProfile}}>
         <Header user={user} userProfile={userProfile} setUser={setUser} setUserProfile={setUserProfile} />
 
         <div id="main">  
@@ -72,6 +75,7 @@ function App() {
           </Switch>
         </div>
         <Footer />
+      </UserContext.Provider>
     </Router>
   );
 }
